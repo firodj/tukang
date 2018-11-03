@@ -7,13 +7,13 @@ set(CMAKE_C_STANDARD 11)
 find_package(OpenGL REQUIRED)
 
 # Setup externals
-set(GL3W_ROOT "${CMAKE_SOURCE_DIR}/gl3w")
+set(GL3W_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/gl3w")
 set(GL3W_INC "${GL3W_ROOT}/include")
 set(GL3W_SRC "${GL3W_ROOT}/src/gl3w.c")
 
 if (NOT EXISTS ${GL3W_SRC})
 	message(STATUS "Generating gl3w source files")
-	execute_process(COMMAND python gl3w_gen.py
+	execute_process(COMMAND python "${GL3W_ROOT}/gl3w_gen.py"
 					WORKING_DIRECTORY ${GL3W_ROOT})
 endif()
 
